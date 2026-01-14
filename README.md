@@ -31,16 +31,13 @@ backend/
 │  ├─ controllers/
 │  │   ├─ authController.js
 │  │   ├─ productController.js
-│  │   └─ uploadController.js
 │  ├─ routes/
 │  │   ├─ authRoutes.js
 │  │   ├─ productRoutes.js
-│  │   └─ uploadRoutes.js
 │  ├─ middleware/
 │  │   └─ auth.js
 │  ├─ config/
 │  │   ├─ supabase.js
-│  │   └─ upload.js
 │  └─ server.js
 ├─ .env
 ├─ package.json
@@ -73,38 +70,27 @@ Authorization: Bearer SEU_TOKEN
 
 ## 📦 Rotas Principais
 
-### 🔓 Públicas
-- `GET /products` → Lista produtos
-- `POST /auth/login` → Login do admin
+### Auth
+- `POST /auth/register` - Criar admin (usar apenas 1 vez)
+- `POST /auth/login` - Login admin (retorna token JWT)
 
-### 🔒 Protegidas (JWT)
-- `POST /products` → Criar produto
-- `PUT /products/:id` → Atualizar produto
-- `DELETE /products/:id` → Remover produto
-- `POST /upload` → Upload de imagem
-
+### Produtos
+- `GET /products` - Listar produtos (público)
+- `POST /products` - Criar produto (admin)
+- `PUT /products/:id` - Editar produto (admin)
+- `PATCH /products/:id/archive` - Arquivar produto (admin)
+- `PATCH /products/:id/unarchive` - Desarquivar produto (admin)
+- `DELETE /products/:id` - Excluir produto (admin)
 ---
 
-## 🖼️ Upload de Imagens
 
-As imagens são enviadas para o **Supabase Storage** e a URL pública é retornada para ser salva no produto.
 
-```
 
-POST /upload
 
-````
-
-Body:
-- `form-data`
-- key: `image`
-- type: File
-
----
 
 ## ⚙️ Variáveis de Ambiente
 
-Crie um arquivo `.env` na raiz do backend:
+um arquivo `.env` na raiz do backend:
 
 ```env
 PORT=3333
@@ -112,10 +98,6 @@ SUPABASE_URL=your_supabase_url
 SUPABASE_KEY=your_supabase_key
 JWT_SECRET=your_secret_key
 ````
-
-⚠️ **Nunca subir o `.env` para o GitHub**.
-
----
 
 ## ▶️ Como rodar o projeto
 
