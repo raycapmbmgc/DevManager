@@ -156,7 +156,7 @@ Este projeto foi desenvolvido com foco em:
 
 **Rayca Rafaelle**
 🔗 GitHub: [https://github.com/raycapmbmgc](https://github.com/raycapmbmgc)
-🔗 Portfólio: [https://potfolio-raycarafaelle.netlify.app/](https://potfolio-raycarafaelle.netlify.app/)
+🔗 Portfólio: [https://potfolio-raycarafaelle.vercel.app/](https://potfolio-raycarafaelle.vercel.app/)/)
 
 ---
 
