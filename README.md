@@ -1,35 +1,26 @@
-# 🚀 DevManager API
+# DevManager - Backend
 
-API REST desenvolvida em **Node.js + Express**, com autenticação **JWT**, integração com **Supabase**, upload de imagens e rotas protegidas para gerenciamento de produtos.
+API para gerenciamento de produtos com autenticação de admin.
 
-Projeto criado com foco em **boas práticas**, **segurança** e **portfólio para vaga júnior**.
+## 🚀 Funcionalidades
 
----
+- Registro e login de admin (JWT)
+- CRUD de produtos:
+  - Criar produto
+  - Editar produto
+  - Excluir produto
+  - Arquivar / desarquivar produto
+- Rotas protegidas para admin
 
-## 🧠 Funcionalidades
-
-- ✅ Autenticação de administrador (login)
-- 🔐 Autorização com JWT
-- 🧱 Middleware de rotas protegidas
-- 📦 CRUD de produtos
-- 🖼️ Upload de imagens com Supabase Storage
-- 🌐 API REST pronta para consumo no frontend
-- 📄 Organização em controllers, routes e middlewares
-
----
-
-## 🛠️ Tecnologias Utilizadas
+## 🛠 Tecnologias
 
 - Node.js
 - Express
-- Supabase (Database + Storage)
-- JWT (jsonwebtoken)
-- bcryptjs
-- Multer
-- dotenv
-- cors
+- Supabase (banco de dados)
+- JWT para autenticação
 
----
+## ⚙️ Variáveis de ambiente
+
 
 ## 📁 Estrutura do Projeto
 
