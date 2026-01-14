@@ -1,20 +1,23 @@
 import dotenv from "dotenv";
-dotenv.config();
+dotenv.config(); // SEMPRE a primeira coisa
 
 import express from "express";
 import cors from "cors";
+
+import authRoutes from "./routes/authRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
 
-const app = express();
+const app = express(); // 👈 PRIMEIRO cria o app
 
 app.use(cors());
 app.use(express.json());
 
+app.use("/auth", authRoutes);
+app.use("/products", productRoutes);
+
 app.get("/", (req, res) => {
   res.send("API DevManager rodando 🚀");
 });
-
-app.use("/products", productRoutes);
 
 const PORT = process.env.PORT || 3333;
 app.listen(PORT, () => {

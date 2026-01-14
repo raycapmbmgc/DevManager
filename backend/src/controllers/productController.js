@@ -1,6 +1,5 @@
 import { supabase } from "../config/supabase.js";
 
-
 export async function getProducts(req, res) {
   const { data, error } = await supabase
     .from("products")
@@ -13,22 +12,8 @@ export async function getProducts(req, res) {
   res.json(data);
 }
 
-export async function getAvailableProducts(req, res) {
-  const { data, error } = await supabase
-    .from("products")
-    .select("*")
-    .eq("available", true);
-
-  if (error) {
-    return res.status(500).json({ error: error.message });
-  }
-
-  res.json(data);
-}
-
-
 export async function createProduct(req, res) {
-  const { name, description, price, category, image_url } = req.body;
+  const { name, price, description } = req.body;
 
   if (!name || !price) {
     return res.status(400).json({ error: "Nome e preço são obrigatórios" });
@@ -36,7 +21,7 @@ export async function createProduct(req, res) {
 
   const { data, error } = await supabase
     .from("products")
-    .insert([{ name, description, price, category, image_url }]);
+    .insert([{ name, price, description }]);
 
   if (error) {
     return res.status(400).json({ error: error.message });
@@ -45,30 +30,21 @@ export async function createProduct(req, res) {
   res.status(201).json(data);
 }
 
-
 export async function updateProduct(req, res) {
   const { id } = req.params;
-  const { name, description, price, category, image_url, available } = req.body;
+  const { name, price, description } = req.body;
 
-  const { data, error } = await supabase
+  const { error } = await supabase
     .from("products")
-    .update({
-      name,
-      description,
-      price,
-      category,
-      image_url,
-      available,
-    })
+    .update({ name, price, description })
     .eq("id", id);
 
   if (error) {
     return res.status(400).json({ error: error.message });
   }
 
-  res.json(data);
+  res.json({ message: "Produto atualizado" });
 }
-
 
 export async function deleteProduct(req, res) {
   const { id } = req.params;
@@ -82,5 +58,5 @@ export async function deleteProduct(req, res) {
     return res.status(400).json({ error: error.message });
   }
 
-  res.status(204).send();
+  res.json({ message: "Produto removido" });
 }
